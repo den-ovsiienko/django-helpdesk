@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 import sys
 
 
-version = '0.5.0'
+version = '0.1.0'
 
 
 # Provided as an attribute, so you can append to these instead
@@ -130,9 +130,9 @@ def get_long_description():
 
 
 setup(
-    name="django-helpdesk",
+    name="dmf-django-helpdesk",
     version=version,
-    description="Django-powered ticket tracker for your helpdesk",
+    description="A fork of django-helpdesk with some customizations",
     long_description=get_long_description(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -164,11 +164,11 @@ setup(
         "track",
         "support",
     ],
-    author="Ross Poulton",
-    author_email="ross@rossp.org",
-    maintainer="Garret Wassermann",
-    maintainer_email="gwasser@gmail.com",
-    url="https://github.com/django-helpdesk/django-helpdesk",
+    author="Denys Ovsiienko",
+    author_email="denys@discovermyfranchise.com",
+    maintainer="Denys Ovsiienko",
+    maintainer_email="denys@discovermyfranchise.com",
+    url="git+https://github.com/den-ovsiienko/django-helpdesk",
     license="BSD",
     packages=find_packages(),
     package_data=find_package_data("helpdesk", only_in_packages=False),
