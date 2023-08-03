@@ -46,6 +46,31 @@ def send_templated_mail(template_name,
         email replies and keep proper threading.
 
     """
+    from importlib import import_module
+
+    # Check if there is a defined send email function path
+    if settings.HELPDESK_SEND_EMAIL_FUNCTION:
+        # Try to import the module and get the function, or raise an error if this fails
+        try:
+            function_path = settings.HELPDESK_SEND_EMAIL_FUNCTION
+            module_path, function_name = function_path.rsplit('.', 1)
+            module = import_module(module_path)
+            function = getattr(module, function_name)
+        except ImportError:
+            raise Exception(f"Could not import module {module_path}")
+        except AttributeError:
+            raise Exception(f"Could not find function {function_name} in module {module_path}")
+
+        # Now you can call the function
+        return function(template_name,
+                        context,
+                        recipients,
+                        sender,
+                        bcc,
+                        fail_silently,
+                        files,
+                        extra_headers)
+
     from django.core.mail import EmailMultiAlternatives
     from django.template import engines
     from_string = engines['django'].from_string
