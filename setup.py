@@ -130,8 +130,8 @@ def get_long_description():
 
 
 setup(
-    name="git+https://github.com/den-ovsiienko/django-helpdesk",
-    # version=version,
+    name="dmf-django-helpdesk",
+    version=version,
     description="A fork of django-helpdesk with some customizations",
     long_description=get_long_description(),
     classifiers=[
